@@ -1,0 +1,1047 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/mafintosh/hyperlog">hyperlog (v4.12.1)</a>
+</h1>
+<h4>Merkle DAG that replicates based on scuttlebutt logs and causal linking</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.hyperlog">module hyperlog</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.hyperlog">
+            function <span class="apidocSignatureSpan"></span>hyperlog
+            <span class="apidocSignatureSpan">(db, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol">
+            function <span class="apidocSignatureSpan">hyperlog.</span>protocol
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.sorted_queue">
+            function <span class="apidocSignatureSpan">hyperlog.</span>sorted_queue
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.super_">
+            function <span class="apidocSignatureSpan">hyperlog.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">hyperlog.</span>encode</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">hyperlog.</span>protocol.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">hyperlog.</span>sorted_queue.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.hyperlog.encode">module hyperlog.encode</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.encode.encode">
+            function <span class="apidocSignatureSpan">hyperlog.</span>encode
+            <span class="apidocSignatureSpan">(value, enc)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.encode.decode">
+            function <span class="apidocSignatureSpan">hyperlog.encode.</span>decode
+            <span class="apidocSignatureSpan">(value, enc)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.hyperlog.protocol">module hyperlog.protocol</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.protocol">
+            function <span class="apidocSignatureSpan">hyperlog.</span>protocol
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.super_">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.</span>super_
+            <span class="apidocSignatureSpan">(writable, readable, opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.hyperlog.protocol.prototype">module hyperlog.protocol.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype._decode">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>_decode
+            <span class="apidocSignatureSpan">(data, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype._encode">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>_encode
+            <span class="apidocSignatureSpan">(type, enc, data, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype.finalize">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>finalize
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype.handshake">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>handshake
+            <span class="apidocSignatureSpan">(handshake, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype.have">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>have
+            <span class="apidocSignatureSpan">(have, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype.node">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>node
+            <span class="apidocSignatureSpan">(node, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype.sentHeads">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>sentHeads
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype.sentWants">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>sentWants
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.protocol.prototype.want">
+            function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>want
+            <span class="apidocSignatureSpan">(want, cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.hyperlog.sorted_queue">module hyperlog.sorted_queue</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.sorted_queue.sorted_queue">
+            function <span class="apidocSignatureSpan">hyperlog.</span>sorted_queue
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.hyperlog.sorted_queue.prototype">module hyperlog.sorted_queue.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.sorted_queue.prototype.pull">
+            function <span class="apidocSignatureSpan">hyperlog.sorted_queue.prototype.</span>pull
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.hyperlog.sorted_queue.prototype.push">
+            function <span class="apidocSignatureSpan">hyperlog.sorted_queue.prototype.</span>push
+            <span class="apidocSignatureSpan">(entry, cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.hyperlog" id="apidoc.module.hyperlog">module hyperlog</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.hyperlog" id="apidoc.element.hyperlog.hyperlog">
+        function <span class="apidocSignatureSpan"></span>hyperlog
+        <span class="apidocSignatureSpan">(db, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hyperlog = function (db, opts) {
+  if (!(this instanceof Hyperlog)) return new Hyperlog(db, opts)
+  if (!opts) opts = {}
+
+  events.EventEmitter.call(this)
+
+  this.id = defined(opts.id, null)
+  this.enumerate = enumerate(db, {prefix: 'enum'})
+  this.db = db
+  this.logs = logs(db, {prefix: 'logs', valueEncoding: messages.Entry})
+  this.lock = defined(opts.lock, mutexify())
+  this.changes = 0
+  this.setMaxListeners(0)
+  this.valueEncoding = defined(opts.valueEncoding, opts.encoding, 'binary')
+  this.identity = defined(opts.identity, null)
+  this.verify = defined(opts.verify, null)
+  this.sign = defined(opts.sign, null)
+  this.hash = defined(opts.hash, hash)
+  this.asyncHash = defined(opts.asyncHash, null)
+
+  // Retrieve this hyperlog instance's unique ID.
+  var self = this
+  var getId = defined(opts.getId, function (cb) {
+    db.get(ID, {valueEncoding: 'utf-8'}, function (_, id) {
+      if (id) return cb(null, id)
+      id = cuid()
+      db.put(ID, id, function () {
+        cb(null, id)
+      })
+    })
+  })
+
+  // Startup logic to..
+  // 1. Determine &amp; record the largest change # in the db.
+  // 2. Determine this hyperlog db's local ID.
+  //
+  // This is behind a lock in order to ensure that no hyperlog operations
+  // can be performed -- these two values MUST be known before any
+  // hyperlog usage may occur.
+  this.lock(function (release) {
+    collect(db.createKeyStream({gt: CHANGES, lt: CHANGES + '~', reverse: true, limit: 1}), function (_, keys) {
+      self.changes = Math.max(self.changes, keys &amp;&amp; keys.length ? lexint.unpack(keys[0].split('!').pop(), 'hex') : 0)
+      if (self.id) return release()
+      getId(function (_, id) {
+        self.id = id || cuid()
+        release()
+      })
+    })
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol" id="apidoc.element.hyperlog.protocol">
+        function <span class="apidocSignatureSpan">hyperlog.</span>protocol
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">protocol = function (opts) {
+  if (!(this instanceof Protocol)) return new Protocol(opts)
+
+  var frame = !opts || opts.frame !== false
+
+  this._encoder = frame ? lpstream.encode() : through.obj()
+  this._decoder = frame ? lpstream.decode() : through.obj()
+  this._finalize = opts.finalize ? opts.finalize : function (cb) { cb() }
+  this._process = opts.process || null
+
+  var self = this
+  var parse = through.obj(function (data, enc, cb) {
+    self._decode(data, cb)
+  })
+
+  parse.on('error', function (err) {
+    self.destroy(err)
+  })
+
+  this.on('end', function () {
+    debug('ended')
+    self.end()
+  })
+
+  this.on('finish', function () {
+    debug('finished')
+    self.finalize()
+  })
+
+  this._decoder.pipe(parse)
+
+  if (this._process) {
+    this._process.pipe(through.obj(function (node, enc, cb) {
+      self.emit('node', node, cb) || cb()
+    }))
+  }
+
+  var hwm = opts.highWaterMark || 16
+  Duplexify.call(this, this._decoder, this._encoder, frame ? {} : {objectMode: true, highWaterMark: hwm})
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.sorted_queue" id="apidoc.element.hyperlog.sorted_queue">
+        function <span class="apidocSignatureSpan">hyperlog.</span>sorted_queue
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sorted_queue = function () {
+  if (!(this instanceof SortedQueue)) return new SortedQueue()
+  this.list = []
+  this.wait = null
+  this.length = 0
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.super_" id="apidoc.element.hyperlog.super_">
+        function <span class="apidocSignatureSpan">hyperlog.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.hyperlog.encode" id="apidoc.module.hyperlog.encode">module hyperlog.encode</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.encode.encode" id="apidoc.element.hyperlog.encode.encode">
+        function <span class="apidocSignatureSpan">hyperlog.</span>encode
+        <span class="apidocSignatureSpan">(value, enc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">encode = function (value, enc) {
+  if (typeof enc === 'object' &amp;&amp; enc.encode) {
+    value = enc.encode(value)
+  } else if (enc === 'json') {
+    value = Buffer(JSON.stringify(value))
+  }
+  if (typeof value === 'string') value = new Buffer(value)
+  return value
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  change: node.change,
+  node: node.key,
+  links: logLinks
+}
+
+var onclone = function (clone) {
+  if (!opts.log) return cb(null, clone, [])
+  batch.push({type: 'put', key: dag.logs.key(node.log, node.seq), value: messages.Entry.<span class="apidocCodeKeywordSpan
+">encode</span>(log)})
+  cb(null, clone)
+}
+
+var done = function () {
+  dag.get(node.key, { valueEncoding: 'binary' }, function (_, clone) {
+    // This node already exists somewhere in the hyperlog; add it to the
+    // log's append-only log, but don't insert it again.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.encode.decode" id="apidoc.element.hyperlog.encode.decode">
+        function <span class="apidocSignatureSpan">hyperlog.encode.</span>decode
+        <span class="apidocSignatureSpan">(value, enc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">decode = function (value, enc) {
+  if (typeof enc === 'object' &amp;&amp; enc.decode) {
+    return enc.decode(value)
+  } else if (enc === 'json') {
+    return JSON.parse(value.toString())
+  } else if (enc === 'utf-8' || enc === 'utf8') {
+    return value.toString()
+  }
+  return value
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (typeof opts === 'function') {
+    cb = opts
+    opts = {}
+  }
+  var self = this
+  this.db.get(NODES + key, {valueEncoding: 'binary'}, function (err, buf) {
+    if (err) return cb(err)
+    var node = messages.Node.<span class="apidocCodeKeywordSpan">decode</span>(buf)
+    node.value = encoder.decode(node.value, opts.valueEncoding || self.valueEncoding)
+    cb(null, node)
+  })
+}
+
+// Utility function to be used in a nodes.reduce() to determine the largest
+// change # present.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.hyperlog.protocol" id="apidoc.module.hyperlog.protocol">module hyperlog.protocol</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.protocol" id="apidoc.element.hyperlog.protocol.protocol">
+        function <span class="apidocSignatureSpan">hyperlog.</span>protocol
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">protocol = function (opts) {
+  if (!(this instanceof Protocol)) return new Protocol(opts)
+
+  var frame = !opts || opts.frame !== false
+
+  this._encoder = frame ? lpstream.encode() : through.obj()
+  this._decoder = frame ? lpstream.decode() : through.obj()
+  this._finalize = opts.finalize ? opts.finalize : function (cb) { cb() }
+  this._process = opts.process || null
+
+  var self = this
+  var parse = through.obj(function (data, enc, cb) {
+    self._decode(data, cb)
+  })
+
+  parse.on('error', function (err) {
+    self.destroy(err)
+  })
+
+  this.on('end', function () {
+    debug('ended')
+    self.end()
+  })
+
+  this.on('finish', function () {
+    debug('finished')
+    self.finalize()
+  })
+
+  this._decoder.pipe(parse)
+
+  if (this._process) {
+    this._process.pipe(through.obj(function (node, enc, cb) {
+      self.emit('node', node, cb) || cb()
+    }))
+  }
+
+  var hwm = opts.highWaterMark || 16
+  Duplexify.call(this, this._decoder, this._encoder, frame ? {} : {objectMode: true, highWaterMark: hwm})
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.super_" id="apidoc.element.hyperlog.protocol.super_">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.</span>super_
+        <span class="apidocSignatureSpan">(writable, readable, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">super_ = function (writable, readable, opts) {
+  if (!(this instanceof Duplexify)) return new Duplexify(writable, readable, opts)
+  stream.Duplex.call(this, opts)
+
+  this._writable = null
+  this._readable = null
+  this._readable2 = null
+
+  this._forwardDestroy = !opts || opts.destroy !== false
+  this._forwardEnd = !opts || opts.end !== false
+  this._corked = 1 // start corked
+  this._ondrain = null
+  this._drained = false
+  this._forwarding = false
+  this._unwrite = null
+  this._unread = null
+  this._ended = false
+
+  this.destroyed = false
+
+  if (writable) this.setWritable(writable)
+  if (readable) this.setReadable(readable)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.hyperlog.protocol.prototype" id="apidoc.module.hyperlog.protocol.prototype">module hyperlog.protocol.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype._decode" id="apidoc.element.hyperlog.protocol.prototype._decode">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>_decode
+        <span class="apidocSignatureSpan">(data, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_decode = function (data, cb) {
+  try {
+    var msg = decodeMessage(data)
+  } catch (err) {
+    return cb(err)
+  }
+
+  switch (data[0]) {
+    case 0:
+      debug('receiving handshake')
+      return this.emit('handshake', msg, cb) || cb()
+
+    case 1:
+      debug('receiving have')
+      return this.emit('have', msg, cb) || cb()
+
+    case 2:
+      debug('receiving want')
+      return this.emit('want', msg, cb) || cb()
+
+    case 3:
+      debug('receiving node')
+      return this._process ? this._process.write(msg, cb) : (this.emit('node', msg, cb) || cb())
+
+    case 4:
+      debug('receiving sentHeads')
+      return this.emit('sentHeads', cb) || cb()
+
+    case 5:
+      debug('receiving sentWants')
+      return this.emit('sentWants', cb) || cb()
+  }
+
+  cb()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._encoder = frame ? lpstream.encode() : through.obj()
+this._decoder = frame ? lpstream.decode() : through.obj()
+this._finalize = opts.finalize ? opts.finalize : function (cb) { cb() }
+this._process = opts.process || null
+
+var self = this
+var parse = through.obj(function (data, enc, cb) {
+  self.<span class="apidocCodeKeywordSpan">_decode</span>(data, cb)
+})
+
+parse.on('error', function (err) {
+  self.destroy(err)
+})
+
+this.on('end', function () {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype._encode" id="apidoc.element.hyperlog.protocol.prototype._encode">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>_encode
+        <span class="apidocSignatureSpan">(type, enc, data, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_encode = function (type, enc, data, cb) {
+  var buf = new Buffer(enc.encodingLength(data) + 1)
+  buf[0] = type
+  enc.encode(data, buf, 1)
+  this._encoder.write(buf, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  Duplexify.call(this, this._decoder, this._encoder, frame ? {} : {objectMode: true, highWaterMark: hwm})
+}
+
+util.inherits(Protocol, Duplexify)
+
+Protocol.prototype.handshake = function (handshake, cb) {
+  debug('sending handshake')
+  this.<span class="apidocCodeKeywordSpan">_encode</span>(0, messages.Handshake, handshake, cb)
+}
+
+Protocol.prototype.have = function (have, cb) {
+  debug('sending have')
+  this._encode(1, messages.Log, have, cb)
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype.finalize" id="apidoc.element.hyperlog.protocol.prototype.finalize">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>finalize
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">finalize = function (cb) {
+  var self = this
+  this._finalize(function (err) {
+    debug('ending')
+    if (err) return self.destroy(err)
+    self._encoder.end(cb)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this.on('end', function () {
+  debug('ended')
+  self.end()
+})
+
+this.on('finish', function () {
+  debug('finished')
+  self.<span class="apidocCodeKeywordSpan">finalize</span>()
+})
+
+this._decoder.pipe(parse)
+
+if (this._process) {
+  this._process.pipe(through.obj(function (node, enc, cb) {
+    self.emit('node', node, cb) || cb()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype.handshake" id="apidoc.element.hyperlog.protocol.prototype.handshake">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>handshake
+        <span class="apidocSignatureSpan">(handshake, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">handshake = function (handshake, cb) {
+  debug('sending handshake')
+  this._encode(0, messages.Handshake, handshake, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        release()
+        if (err) return cb(err)
+        sentHeads(cb)
+      })
+    })
+  })
+
+  stream.<span class="apidocCodeKeywordSpan">handshake</span>({version: 1, mode: opts.mode, metadata: opts.metadata, live: live})
+
+  return stream
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype.have" id="apidoc.element.hyperlog.protocol.prototype.have">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>have
+        <span class="apidocSignatureSpan">(have, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">have = function (have, cb) {
+  debug('sending have')
+  this._encode(1, messages.Log, have, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    dag.logs.head(log, function (err, seq) {
+      if (err) return cb(err)
+      dag.logs.get(log, seq, function loop (err, entry) { // ensure snapshot
+        if (err &amp;&amp; err.notFound) return cb()
+        if (err) return cb(err)
+        if (entry.change &gt; changes) return dag.logs.get(log, seq - 1, loop)
+        stream.<span class="apidocCodeKeywordSpan">have</span>({log: log, seq: seq}, cb)
+      })
+    })
+  })
+}
+
+stream.once('sentHeads', function (cb) {
+  if (!localSentWants &amp;&amp; !missing) sentWants(noop)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype.node" id="apidoc.element.hyperlog.protocol.prototype.node">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>node
+        <span class="apidocSignatureSpan">(node, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">node = function (node, cb) {
+  debug('sending node')
+  this._encode(3, messages.Node, node, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  if (entry.log &amp;&amp; (node.log !== entry.log || node.seq !== entry.seq)) { // deduplicated
+    node.log = entry.log
+    node.seq = entry.seq
+  }
+
+  stream.emit('push')
+  stream.<span class="apidocCodeKeywordSpan">node</span>(node, function (err) {
+    if (err) return stream.destroy(err)
+    sendNode(node.log, node.seq + 1, function (err) {
+      if (err) return stream.destroy(err)
+      outgoing.pull(loop)
+    })
+  })
+})
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype.sentHeads" id="apidoc.element.hyperlog.protocol.prototype.sentHeads">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>sentHeads
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sentHeads = function (cb) {
+  debug('sending sentHeads')
+  this._encode(4, empty, null, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  stream.sentWants()
+  update(cb)
+}
+
+// Inform the other side that we've sent all of the heads we have.
+var sentHeads = function (cb) {
+  localSentHeads = true
+  stream.<span class="apidocCodeKeywordSpan">sentHeads</span>()
+  update(cb)
+}
+
+// Send a specific entry in a specific log to the other side.
+// If the node links to other nodes, inform the other side we have those,
+// too.
+var sendNode = function (log, seq, cb) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype.sentWants" id="apidoc.element.hyperlog.protocol.prototype.sentWants">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>sentWants
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sentWants = function (cb) {
+  debug('sending sentWants')
+  this._encode(5, empty, null, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  sendChanges()
+  cb()
+}
+
+// Inform the other side that we've requested all of the nodes we want.
+var sentWants = function (cb) {
+  localSentWants = true
+  stream.<span class="apidocCodeKeywordSpan">sentWants</span>()
+  update(cb)
+}
+
+// Inform the other side that we've sent all of the heads we have.
+var sentHeads = function (cb) {
+  localSentHeads = true
+  stream.sentHeads()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.protocol.prototype.want" id="apidoc.element.hyperlog.protocol.prototype.want">
+        function <span class="apidocSignatureSpan">hyperlog.protocol.prototype.</span>want
+        <span class="apidocSignatureSpan">(want, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">want = function (want, cb) {
+  debug('sending want')
+  this._encode(2, messages.Log, want, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+})
+
+stream.on('have', function (head, cb) {
+  dag.logs.head(head.log, function (err, seq) {
+    if (err) return cb(err)
+    if (seq &gt;= head.seq) return cb()
+    missing += (head.seq - seq)
+    stream.<span class="apidocCodeKeywordSpan">want</span>({log: head.log, seq: seq}, cb)
+  })
+})
+
+stream.on('node', receiveNode)
+
+// start the handshake
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.hyperlog.sorted_queue" id="apidoc.module.hyperlog.sorted_queue">module hyperlog.sorted_queue</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.sorted_queue.sorted_queue" id="apidoc.element.hyperlog.sorted_queue.sorted_queue">
+        function <span class="apidocSignatureSpan">hyperlog.</span>sorted_queue
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sorted_queue = function () {
+  if (!(this instanceof SortedQueue)) return new SortedQueue()
+  this.list = []
+  this.wait = null
+  this.length = 0
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.hyperlog.sorted_queue.prototype" id="apidoc.module.hyperlog.sorted_queue.prototype">module hyperlog.sorted_queue.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.sorted_queue.prototype.pull" id="apidoc.element.hyperlog.sorted_queue.prototype.pull">
+        function <span class="apidocSignatureSpan">hyperlog.sorted_queue.prototype.</span>pull
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pull = function (cb) {
+  if (!this.list.length) {
+    this.wait = cb
+    return
+  }
+
+  this.wait = null
+
+  var next = this.list.shift()
+  this.length--
+
+  cb(next)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // Local nodes yet to be sent.
+  var outgoing = sortedQueue()
+  // Remote nodes yet to be added to this hyperlog.
+  var incoming = sortedQueue()
+
+  // Asynchronous loop to continue sending nodes from a log in sequence from
+  // low seq # to its highest seq #.
+  outgoing.<span class="apidocCodeKeywordSpan">pull</span>(function loop (entry) {
+    dag.get(entry.node, {valueEncoding: 'binary'}, function (err, node) {
+if (err) return stream.destroy(err)
+
+if (entry.log &amp;&amp; (node.log !== entry.log || node.seq !== entry.seq)) { // deduplicated
+  node.log = entry.log
+  node.seq = entry.seq
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.hyperlog.sorted_queue.prototype.push" id="apidoc.element.hyperlog.sorted_queue.prototype.push">
+        function <span class="apidocSignatureSpan">hyperlog.sorted_queue.prototype.</span>push
+        <span class="apidocSignatureSpan">(entry, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">push = function (entry, cb) {
+  var i = indexOf(this.list, entry.change)
+  if (i === this.list.length) this.list.push(entry)
+  else this.list.splice(i, 0, entry)
+  this.length++
+
+  if (this.wait) this.pull(this.wait)
+  if (cb) cb()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  change: node.change,
+  node: node.key,
+  links: logLinks
+}
+
+var onclone = function (clone) {
+  if (!opts.log) return cb(null, clone, [])
+  batch.<span class="apidocCodeKeywordSpan">push</span>({type: 'put', key: dag.logs.key(node.log, node.seq), value: messages
+.Entry.encode(log)})
+  cb(null, clone)
+}
+
+var done = function () {
+  dag.get(node.key, { valueEncoding: 'binary' }, function (_, clone) {
+    // This node already exists somewhere in the hyperlog; add it to the
+    // log's append-only log, but don't insert it again.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
